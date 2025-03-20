@@ -16,10 +16,6 @@ createMap:
 	.cfi_endproc
 .LFE23:
 	.size	createMap, .-createMap
-	.section	.rodata.str1.1,"aMS",@progbits,1
-.LC0:
-	.string	"%s"
-	.text
 	.p2align 4
 	.globl	printMap
 	.type	printMap, @function
@@ -32,22 +28,21 @@ printMap:
 	.cfi_offset 6, -16
 	movq	%rsp, %rbp
 	.cfi_def_cfa_register 6
-	pushq	%r14
-	.cfi_offset 14, -24
-	movq	%rdi, %r14
 	pushq	%r13
+	.cfi_offset 13, -24
+	movq	%rdi, %r13
 	pushq	%r12
 	pushq	%rbx
-	subq	$16, %rsp
-	.cfi_offset 13, -32
-	.cfi_offset 12, -40
-	.cfi_offset 3, -48
+	subq	$24, %rsp
+	.cfi_offset 12, -32
+	.cfi_offset 3, -40
+	movslq	12(%rdi), %rcx
 	movq	%fs:40, %rax
 	movq	%rax, -40(%rbp)
 	xorl	%eax, %eax
-	movslq	12(%rdi), %rax
 	movq	%rsp, %rsi
-	movq	%rax, %rcx
+	leal	1(%rcx), %eax
+	cltq
 	addq	$15, %rax
 	movq	%rax, %rdx
 	andq	$-4096, %rax
@@ -55,21 +50,20 @@ printMap:
 	andq	$-16, %rdx
 	cmpq	%rsi, %rsp
 	je	.L5
-.L20:
+.L21:
 	subq	$4096, %rsp
 	orq	$0, 4088(%rsp)
 	cmpq	%rsi, %rsp
-	jne	.L20
+	jne	.L21
 .L5:
 	andl	$4095, %edx
 	subq	%rdx, %rsp
 	testq	%rdx, %rdx
-	jne	.L21
+	jne	.L22
 .L6:
-	movl	8(%r14), %eax
-	movq	%rsp, %r12
-	xorl	%r13d, %r13d
-	leaq	.LC0(%rip), %rbx
+	movl	8(%r13), %eax
+	movq	%rsp, %rbx
+	xorl	%r12d, %r12d
 	testl	%eax, %eax
 	jle	.L3
 	.p2align 4,,10
@@ -77,49 +71,55 @@ printMap:
 .L7:
 	testl	%ecx, %ecx
 	jle	.L11
-	movq	16(%r14), %rax
-	leaq	(%rax,%r13,8), %rsi
+	movq	16(%r13), %rax
+	leaq	(%rax,%r12,8), %rsi
 	xorl	%eax, %eax
 	.p2align 4,,10
 	.p2align 3
-.L9:
+.L12:
 	movq	(%rsi), %rdx
-	movl	(%rdx,%rax,4), %edx
-	movb	%dl, (%r12,%rax)
+	cmpl	$1, (%rdx,%rax,4)
+	je	.L9
+	movb	$46, (%rbx,%rax)
 	addq	$1, %rax
 	cmpq	%rax, %rcx
-	jne	.L9
+	jne	.L12
 .L11:
-	movq	%r12, %rdx
-	movq	%rbx, %rsi
-	movl	$2, %edi
-	xorl	%eax, %eax
-	call	__printf_chk@PLT
-	addq	$1, %r13
-	cmpl	%r13d, 8(%r14)
+	movb	$0, (%rbx,%rcx)
+	movq	%rbx, %rdi
+	addq	$1, %r12
+	call	puts@PLT
+	cmpl	%r12d, 8(%r13)
 	jle	.L3
-	movslq	12(%r14), %rcx
+	movslq	12(%r13), %rcx
 	jmp	.L7
+	.p2align 4,,10
+	.p2align 3
+.L9:
+	movb	$35, (%rbx,%rax)
+	addq	$1, %rax
+	cmpq	%rax, %rcx
+	jne	.L12
+	jmp	.L11
 	.p2align 4,,10
 	.p2align 3
 .L3:
 	movq	-40(%rbp), %rax
 	subq	%fs:40, %rax
-	jne	.L22
-	leaq	-32(%rbp), %rsp
+	jne	.L23
+	leaq	-24(%rbp), %rsp
 	popq	%rbx
 	popq	%r12
 	popq	%r13
-	popq	%r14
 	popq	%rbp
 	.cfi_remember_state
 	.cfi_def_cfa 7, 8
 	ret
-.L21:
+.L22:
 	.cfi_restore_state
 	orq	$0, -8(%rsp,%rdx)
 	jmp	.L6
-.L22:
+.L23:
 	call	__stack_chk_fail@PLT
 	.cfi_endproc
 .LFE24:

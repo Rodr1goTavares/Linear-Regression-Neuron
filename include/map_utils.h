@@ -12,4 +12,6 @@ struct Map createMap(int height, int width);
 
 void printMap(struct Map *map);
 
+void freeMapMemory(struct Map *map);
+
 #endif

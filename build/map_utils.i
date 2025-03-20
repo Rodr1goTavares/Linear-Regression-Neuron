@@ -10,7 +10,7 @@
 
 struct Map {
   char* name;
-  int heigth;
+  int height;
   int width;
   int** matrix;
 };
@@ -1176,7 +1176,7 @@ fread_unlocked (void *__restrict __ptr, size_t __size, size_t __n,
 # 5 "src/map_utils.c"
 struct Map createMap(int height, int width) {
   struct Map map;
-  map.heigth = height;
+  map.height = height;
   map.width = width;
 
   int map_matrix[height][width];
@@ -1199,9 +1199,11 @@ struct Map createMap(int height, int width) {
 }
 
 void printMap(struct Map *map) {
-  char line[map->width];
-  for (int i = 0; i < map->heigth; i++) {
-    for (int j = 0; j < map->width; j++) line[j] = map->matrix[i][j];
-    printf("%s", line);
+  char line[map->width + 1];
+
+  for (int i = 0; i < map->height; i++) {
+    for (int j = 0; j < map->width; j++) line[j] = (map->matrix[i][j] == 1) ? '#' : '.';
+    line[map->width] = '\0';
+    printf("%s\n", line);
   }
 }
