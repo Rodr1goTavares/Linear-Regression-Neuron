@@ -1,29 +1,43 @@
 	.file	"main.c"
 	.text
-	.section	.rodata.str1.1,"aMS",@progbits,1
-.LC0:
-	.string	"Result: %d"
 	.section	.text.startup,"ax",@progbits
 	.p2align 4
 	.globl	main
 	.type	main, @function
 main:
-.LFB23:
+.LFB0:
 	.cfi_startproc
 	endbr64
-	subq	$8, %rsp
+	pushq	%rbx
 	.cfi_def_cfa_offset 16
-	movl	$3, %edx
-	movl	$2, %edi
+	.cfi_offset 3, -16
+	movl	$10, %edx
+	movl	$10, %esi
+	subq	$32, %rsp
+	.cfi_def_cfa_offset 48
+	movq	%fs:40, %rax
+	movq	%rax, 24(%rsp)
 	xorl	%eax, %eax
-	leaq	.LC0(%rip), %rsi
-	call	__printf_chk@PLT
+	movq	%rsp, %rbx
+	movq	%rbx, %rdi
+	call	createMap@PLT
+	movq	%rbx, %rdi
+	call	printMap@PLT
+	movq	24(%rsp), %rax
+	subq	%fs:40, %rax
+	jne	.L5
+	addq	$32, %rsp
+	.cfi_remember_state
+	.cfi_def_cfa_offset 16
 	xorl	%eax, %eax
-	addq	$8, %rsp
+	popq	%rbx
 	.cfi_def_cfa_offset 8
 	ret
+.L5:
+	.cfi_restore_state
+	call	__stack_chk_fail@PLT
 	.cfi_endproc
-.LFE23:
+.LFE0:
 	.size	main, .-main
 	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
