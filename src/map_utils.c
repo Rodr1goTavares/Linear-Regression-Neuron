@@ -1,9 +1,10 @@
 #include "../include/map_utils.h"
+#include <stdio.h>
 
 
 struct Map createMap(int height, int width) {
   struct Map map;
-  map.heigth = height;
+  map.height = height;
   map.width = width;
 
   int map_matrix[height][width];
@@ -12,14 +13,25 @@ struct Map createMap(int height, int width) {
 
   while (h_aux++ < height && w_aux++ < width) {
     // Fill horizontal borders.
-    map_matrix[0][w_aux] = 1;
-    map_matrix[height - 1][w_aux] = 1;
-
+    if (w_aux != width) {
+      map_matrix[0][w_aux] = 1;
+      map_matrix[height - 1][w_aux] = 1;
+    }
     // Fill vertical borders.
-    map_matrix[h_aux][0] = 1;
-    map_matrix[h_aux][width - 1] = 1;
+    if (h_aux != height) {
+      map_matrix[h_aux][0] = 1;
+      map_matrix[h_aux][width - 1] = 1;
+    }
   }
   return map;
 }
 
-void printMap(struct Map *map) {}
+void printMap(struct Map *map) {
+  char line[map->width + 1];
+
+  for (int i = 0; i < map->height; i++) {
+    for (int j = 0; j < map->width; j++) line[j] = (map->matrix[i][j] == 1) ? '#' : '.';
+    line[map->width] = '\0';
+    printf("%s\n", line);
+  }
+}

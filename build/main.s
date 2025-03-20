@@ -1,11 +1,15 @@
 	.file	"main.c"
 	.text
+	.section	.rodata.str1.8,"aMS",@progbits,1
+	.align 8
+.LC0:
+	.string	"Map created. Trying to print... "
 	.section	.text.startup,"ax",@progbits
 	.p2align 4
 	.globl	main
 	.type	main, @function
 main:
-.LFB0:
+.LFB23:
 	.cfi_startproc
 	endbr64
 	pushq	%rbx
@@ -21,6 +25,8 @@ main:
 	movq	%rsp, %rbx
 	movq	%rbx, %rdi
 	call	createMap@PLT
+	leaq	.LC0(%rip), %rdi
+	call	puts@PLT
 	movq	%rbx, %rdi
 	call	printMap@PLT
 	movq	24(%rsp), %rax
@@ -37,7 +43,7 @@ main:
 	.cfi_restore_state
 	call	__stack_chk_fail@PLT
 	.cfi_endproc
-.LFE0:
+.LFE23:
 	.size	main, .-main
 	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits

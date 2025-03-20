@@ -3,7 +3,7 @@
 
 struct Map {
   char* name;
-  int heigth;
+  int height;
   int width;
   int** matrix;
 };
