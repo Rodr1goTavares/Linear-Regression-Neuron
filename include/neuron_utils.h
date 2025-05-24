@@ -1,5 +1,5 @@
-#ifndef _MAP_UTILS_H
-#define _MAP_UTILS_H
+#ifndef _NEURON_UTILS_H
+#define _NEURON_UTILS_H
 
 struct Neuron {
   float weight;
