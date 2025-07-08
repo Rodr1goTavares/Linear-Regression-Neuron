@@ -32,7 +32,7 @@ The project provides a simple function to compute the neuron output given an inp
 <details>
 <summary>🇧🇷 Tradução em Português</summary>
 
-# Neurônio de Regressão Linear em C
+# Neurônio de Regressão Linear
 
 Este projeto implementa um neurônio simples de regressão linear em C, projetado para prever saídas em problemas lineares.
 
