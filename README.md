@@ -1,6 +1,6 @@
-# Linear Regression Neuron in C ⚙️🧠
+# Linear Regression Neuron in C 
 
-This project implements a simple linear regression neuron in C, designed to predict outputs for linear problems. ✨📊
+This project implements a simple linear regression neuron in C, designed to predict outputs for linear problems.
 
 ## About ℹ️
 
@@ -32,9 +32,9 @@ The project provides a simple function to compute the neuron output given an inp
 <details>
 <summary>🇧🇷 Tradução em Português</summary>
 
-# Neurônio de Regressão Linear em C ⚙️🧠
+# Neurônio de Regressão Linear em C
 
-Este projeto implementa um neurônio simples de regressão linear em C, projetado para prever saídas em problemas lineares. ✨📊
+Este projeto implementa um neurônio simples de regressão linear em C, projetado para prever saídas em problemas lineares.
 
 ## Sobre ℹ️
 
