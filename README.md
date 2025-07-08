@@ -10,9 +10,9 @@ A linear regression neuron models the relationship between input(s) and output u
 \text{output} = \sum_{i=1}^{n} (w_i \times x_i) + b
 \]
 
-- **\(w_i\)** = weights (coefficients) 🎯  
-- **\(x_i\)** = input features 🎛️  
-- **\(b\)** = bias (intercept) 🎚️  
+- **\(w_i\)** = weights (coefficients)
+- **\(x_i\)** = input features
+- **\(b\)** = bias (intercept)
 
 This formula corresponds to the equation of a straight line (or hyperplane for multiple inputs), where the weights represent the slope(s) and the bias represents the intercept. 📈
 
@@ -21,7 +21,7 @@ This formula corresponds to the equation of a straight line (or hyperplane for m
 - The neuron’s prediction can be visualized as a line on a 2D graph when there is one input feature. 🖼️  
 - The weight determines the angle (slope) of the line. ↗️  
 - The bias shifts the line up or down (intercept). ⬆️⬇️  
-- The goal of training this neuron is to find the best weight and bias so the line fits the data points as closely as possible. 🎯
+- The goal of training this neuron is to find the best weight and bias so the line fits the data points as closely as possible.
 
 ## Usage 🛠️
 
@@ -44,9 +44,9 @@ Um neurônio de regressão linear modela a relação entre entrada(s) e saída u
 \text{saída} = \sum_{i=1}^{n} (w_i \times x_i) + b
 \]
 
-- **\(w_i\)** = pesos (coeficientes) 🎯  
-- **\(x_i\)** = características de entrada 🎛️  
-- **\(b\)** = bias (interceptação) 🎚️  
+- **\(w_i\)** = pesos (coeficientes)
+- **\(x_i\)** = características de entrada 
+- **\(b\)** = bias (interceptação)
 
 Essa fórmula corresponde à equação de uma linha reta (ou hiperplano para múltiplas entradas), onde os pesos representam a inclinação e o bias o ponto de interceptação. 📈
 
