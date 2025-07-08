@@ -18,7 +18,7 @@ This formula corresponds to the equation of a straight line (or hyperplane for m
 
 ## Graphical Interpretation 📉
 
-- The neuron’s prediction can be visualized as a line on a 2D graph when there is one input feature. 🖼️  
+- The neuron’s prediction can be visualized as a line on a 2D graph when there is one input feature.
 - The weight determines the angle (slope) of the line. ↗️  
 - The bias shifts the line up or down (intercept). ⬆️⬇️  
 - The goal of training this neuron is to find the best weight and bias so the line fits the data points as closely as possible.
@@ -52,10 +52,10 @@ Essa fórmula corresponde à equação de uma linha reta (ou hiperplano para mú
 
 ## Interpretação Gráfica 📉
 
-- A previsão do neurônio pode ser visualizada como uma linha em um gráfico 2D quando há uma única entrada. 🖼️  
+- A previsão do neurônio pode ser visualizada como uma linha em um gráfico 2D quando há uma única entrada. 
 - O peso determina o ângulo (inclinação) da linha. ↗️  
 - O bias desloca a linha para cima ou para baixo (interceptação). ⬆️⬇️  
-- O objetivo do treinamento é encontrar o melhor peso e bias para que a linha se ajuste o máximo possível aos pontos de dados. 🎯
+- O objetivo do treinamento é encontrar o melhor peso e bias para que a linha se ajuste o máximo possível aos pontos de dados.
 
 ## Uso 🛠️
 
